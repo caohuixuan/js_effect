@@ -1,0 +1,239 @@
+body,p,ul{
+	margin: 0px;
+	padding: 0px;
+}
+.top{
+width: 950px;
+height: 30px;
+margin: 0px auto;
+}
+.top_1{
+	font: 12px arial;
+	float: left;
+	color: #999;
+	height: 30px;
+	line-height: 30px;
+}
+.top_1 span{
+	font-weight: bold;
+	color: #f00;
+}
+.top_2{
+	float: right;
+	height: 30px;
+	line-height: 30px;
+}
+.top_2 a:link,.top_2 a:visited{
+	font: 12px arial;
+	text-decoration: none;
+	color: #999;
+}
+.top_2 a:hover{
+	font: 12px arial;
+	text-decoration: none;
+	color: #999;
+}
+.link{
+	width: 950px;
+	height: 54px;
+	margin:0px auto;
+}
+.link img{
+	float: left;
+	border: 1px solid #ccc;
+}
+.link ul{
+	float: left;
+	list-style:none;
+}
+.link ul li{
+	float: left;
+	height: 54px;
+	width: 129px;
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.link ul li a{
+	display: inline-block;
+	width: 129px;
+	height: 34px;
+	line-height: 34px;
+    padding-top: 20px;
+}
+.link ul li a:link,.link ul li a:visited{
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+	font: 16px "微软雅黑";
+	text-decoration: none;
+}
+.link ul li a:hover{
+    background-color: #a00;
+    color: #fff;
+    font-weight: bold;
+    	font: 16px "微软雅黑";
+	text-decoration: none;
+}
+.content{
+	width: 950px;
+	margin: 20px auto 0px auto;
+}
+.content1 .content1_left{
+	position: relative;
+	width: 710px;
+	height: 250px;
+	overflow: hidden;
+	margin-bottom: 15px;
+	float: left;
+	background-color: #ccc;
+}
+#banner img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.content1 .content1_right{
+	float: right;
+		margin-bottom: 15px;
+	width: 223px;
+	height: 250px;
+	background: url(../img/right_notice.jpg) no-repeat;
+}
+.content1_right ul{
+	font: 12px arial;
+	margin: 150px 0px 0px 30px;
+}
+.content1_right ul li{
+	padding-bottom: 8px;
+}
+.content1_right ul li a:link,.content1_right ul li a:visited,.content1_right ul li a:hover{
+	text-decoration: none;
+	color: #999;
+}
+.content2{
+	clear: both;
+	height: 81px;
+	width: 950px;
+	background: url(../img/fastway.jpg) no-repeat;
+}
+.content2 img{
+	padding-top:30px; 
+}
+.content2 .img1{
+	padding-left: 30px;
+}
+.content2 .img2{
+	padding-left: 120px;
+}
+.content2 .img3{
+	padding-left: 120px;
+}
+.content2 .img4{
+	padding-left: 110px;
+}
+.content3{
+	margin-top: 15px;
+}
+.content3_left{
+	width: 660px;
+	height: 170px;
+	float: left;
+	padding-top: 100px;
+	background: url(../img/class.jpg) no-repeat;
+}
+.content3_left p{
+	width: 660px;
+  background-color: #f00;
+}
+.content3_left p span{
+  font: 16px arial;
+  color: #000;
+  font-weight: bolder;
+  display: inline-block;
+  padding:10px 0px 0px 40px; 
+  width: 80px;
+  float: left;
+  clear: both;
+}
+.l{
+   width: 500px;
+   float: right;
+   margin-right: 30px;
+   margin-top: 8px
+}
+.l a:link,.l a:visited,.l a:hover{
+	color: #999;
+	text-decoration: none;
+	font: 14px arial;
+}
+.content3_right{
+	width: 281px;
+	height: 270px;
+	float: right;
+	background: url(../img/exam.jpg) no-repeat;
+}
+.content3_right ul{
+	margin-top:50px;
+	margin-left: 30px;
+}
+.content3_right ul li{
+	font: 12px arial;
+	padding-bottom: 8px;
+	padding-right: 10px;
+}
+.content3_right ul li span{
+	float: right;
+}
+.content3_right ul li a:link,.content3_right ul li a:visited,.content3_right ul li a:hover{
+	color: #999;
+	text-decoration: none;
+}
+.content4_left p{
+width: 130px;
+float: left;
+padding:20px 0px 0px 30px; 
+font: 12px arial;
+color: #999;
+}
+.content4_right{
+	float: right;
+}
+.content5{
+	clear: both;
+	height: 52px;
+	background: url(../img/friend_link.jpg) repeat-x;
+    padding-top: 20px;
+}
+.content5 span{
+	font: 16px arial;
+	padding-left:20px;
+	color: #900;
+	background: url(../img/coin.gif) no-repeat 5px;
+	font-weight: bolder;
+}
+.content5 a:link,.content5 a:visited,.content5 a:hover{
+	color: #999;
+	text-decoration: none;
+	font: 14px arial;
+}
+.footer{
+	width: 950px;
+	margin:0px auto; 
+}
+.footer p{
+    width: 950px;
+    text-align: center;
+    margin-top: 20px;
+}
+.footer p a:link,.footer p a:visited,.footer p a:hover{
+	font: 16px arial;
+	color: #999;
+	text-decoration: none;
+}
+.footer p span{
+	font: 12px arial;
+	color: #ccc;
+    padding-bottom: 20px;
+}

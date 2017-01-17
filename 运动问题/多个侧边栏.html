@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多个侧边栏</title>
+		<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+			div{
+				width: 20px;
+				height: 100px;
+				background-color: #009900;
+				margin-bottom: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var sid;
+				var speed;
+				var div=document.getElementsByTagName("div");
+				for(var i=0;i<div.length;i++){
+					div[i].onmouseover=function(){
+						move(200,this);
+					};
+					div[i].onmouseout=function(){
+						move(20,this);
+					};
+				}
+				function move(target,obj){
+					clearInterval(obj.sid);
+					obj.sid=setInterval(function(){
+						speed=(target-obj.offsetWidth)/20;
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						if(obj.offsetWidth==target){
+							clearInterval(obj.sid);
+						}else{
+							obj.style.width=obj.offsetWidth+speed+"px";
+						}
+					},20);
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

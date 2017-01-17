@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>收缩banner</title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+				text-align: center;
+			}
+			img{
+				vertical-align: top;
+			}
+		</style>
+		<script type="text/javascript">
+		var showImg={
+			curve:function(position,form,changeVal,playTime){
+				if((position/=playTime/2)<1)return changeVal/2*position*position*position+form;
+				return changeVal/2*((position-=2)*position*position+2)+form;
+			},
+			fx:function(form,to,playTime,endFun){
+				var Me=this,
+				who=this.topDiv,
+				position=0,
+				changeVal=to-form,
+				curve=this.curve;
+				playTime=playTime/10;
+				who.style.overflow="hidden";
+				function _run(){
+					if(position++<playTime){
+						who.style.height=Math.max(1,Math.abs(Math.ceil(curve(position,form,changeVal,playTime))))+"px";
+						setTimeout(_run,10);
+					}else{
+						endFun&&endFun.call(Me,to);
+					}
+				}
+				_run();
+			},
+			init:function(info){
+			var Me=this;
+			//var loading=new Image;
+			//loading.src=info.asImg;
+			window.onload=function(){
+				Me.asImg=info.asImg;
+				Me.abImg=document.getElementById(info.abImg);
+				Me.topDiv=document.getElementById(info.topDiv);
+				var max=Me.abImg.height;
+				setTimeout(function(){
+					Me.fx(max,0,500,function(){
+						this.abImg.src=this.asImg;
+						this.curve=function(form,to,playTime,d){
+							if((form/=d)<(1/2.75)){
+								return playTime*(7.5625*form*form)+to;
+							}else if(form<(2/2.73)){
+								return playTime*(7.5625*(form-=(1.5/2.75))*form+.75)+to;
+							}else if(form<(2/2.75)){
+								return playTime*(7.5625*(form-=(2.25/2.75))*form+.9375)+to;
+							}else{
+								return playTime*(7.5625*(form-=(2.625/2.75))*form+.9843656)+to;
+							}
+							
+						};
+						this.fx(0,this.abImg.height,600);
+					})
+				},info.timeout||1000);
+			};
+			},
+		};
+			showImg.init({
+				topDiv:"advertise",
+				abImg:"abImg",
+				asImg:"images/as.jpg"
+			});
+		</script>
+	</head>
+	<body>
+		<div id="advertise">
+			<img id="abImg" src="images/ab.jpg"/>
+		</div>
+	</body>
+</html>

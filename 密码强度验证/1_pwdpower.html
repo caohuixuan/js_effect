@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>密码强度验证</title>
+	</head>
+	<style>
+	body{
+		font: 12px "微软雅黑";
+	}
+	span{
+		display: none;
+		/*display: inline-block;*/
+		width: 22px;
+		margin-top: 3px;
+		margin-left: 2px;
+		text-align: center;
+	}
+	#pwderror{
+		display: none;
+		color: #f00;
+	}
+	.ruo{
+		width: 30px;
+		background-color: #FF0000;   
+	}
+	.zhong{
+		width: 30px;
+		background-color: #ff0;
+	}
+	.qiang{
+		width: 30px;
+		background-color:#090 ;
+	}
+    #pwd{
+    	width: 232px;
+    }
+	</style>
+	<script>
+		window.onload=function(){
+			var getid=function(thisid){var thisid=document.getElementById(thisid);return thisid;}
+			var pwd=getid("pwd");
+			var tip=getid("tip");
+			var ruo=getid("ruo");
+			var zhong=getid("zhong");
+			var qiang=getid("qiang");
+			var pwderror=getid("pwderror");
+			var str=/[a-zA-Z]/;
+			var num=/[0-9]/;
+			var qt=/\W/;
+			pwd.onkeyup=function(){
+				if(pwd.value.length<6){
+					tip.style.display="block";
+					pwderror.style.display="none";
+					qiang.style.display="none";
+						zhong.style.display="none";
+						ruo.style.display="none";
+				}else if(pwd.value.length<=16){
+					if(str.test(pwd.value)&&num.test(pwd.value)&&qt.test(pwd.value)){
+						zhong.className="qiang";zhong.style.display="inline-block";zhong.innerHTML="&nbsp";
+						ruo.className="qiang";ruo.style.display="inline-block";ruo.innerHTML="&nbsp";
+						qiang.className="qiang";qiang.style.display="inline-block";qiang.innerHTML="强";
+					}
+					if(!str.test(pwd.value)&&num.test(pwd.value)&&qt.test(pwd.value)||str.test(pwd.value)&&!num.test(pwd.value)&&qt.test(pwd.value)||str.test(pwd.value)&&num.test(pwd.value)&&!qt.test(pwd.value)){
+						zhong.className="zhong";zhong.style.display="inline-block";zhong.innerHTML="中";
+						ruo.className="zhong";ruo.style.display="inline-block";ruo.innerHTML="&nbsp";
+						qiang.style.display="none";
+					}
+					if(!str.test(pwd.value)&&!num.test(pwd.value)&&qt.test(pwd.value)||str.test(pwd.value)&&!num.test(pwd.value)&&!qt.test(pwd.value)||!str.test(pwd.value)&&num.test(pwd.value)&&!qt.test(pwd.value)){
+						ruo.className="ruo";ruo.style.display="inline-block";ruo.innerHTML="弱";
+						qiang.style.display="none";
+						zhong.style.display="none";
+					}
+				}else{
+					tip.style.display="none";
+					pwderror.style.display="block";
+				}
+			}
+		}
+	</script>
+	<body>
+		<form>
+			密码：<input type="password" id="pwd" />
+			<div id="tip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码6-16个字符区分大小写<span id="ruo"></span><span id="zhong"></span><span id="qiang"></span></div>
+		    <div id="pwderror">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码为6-16个字符</div>
+		</form>
+		
+	</body>
+</html>

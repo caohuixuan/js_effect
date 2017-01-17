@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>横向二级菜单</title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				position: relative;
+				width: 600px;
+				height: 600px;
+				background-color: #EEEEEE;
+				text-align: center;
+			}
+			#div1 li{
+				/**vertical-align: top;*/
+			}
+			#list_1{
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			#list_1 li{
+				float: left;
+				width: 150px;
+				height: 39px;
+				border-bottom: 1px solid #FFFFFF;
+			}
+			#list_1 a{
+				display: block;
+				height: 30px;
+				width: 150px;
+				padding-top: 9px;
+			}
+			#list_1 a:link,#list_1 a:visited{
+           	color: #fff;
+           	text-decoration: none;
+           	background-color: #FF7F50;
+           }
+            #list_1 a:hover{
+           	color: #090;
+           	text-decoration: none;
+           	background-color:#ff5050 ;
+           }
+           .list_2{
+           	display: none;
+           	list-style: none;
+           	margin: 0px;
+           	padding: 0px;
+           }
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var list_1=document.getElementById("list_1");
+				for(var i=0;i<list_1.children.length;i++){
+				    list_1.children[i].onmouseover=function(){
+				    	this.children[1].style.display="block";
+				    };
+				    list_1.children[i].onmouseout=function(){
+				        this.children[1].style.display="none";    	
+				    };
+				}
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<ul id="list_1">
+				<li><a href="#">关于我们</a>
+					<ul class="list_2" id="list_2_1">
+						<li><a href="#">1手机</a></li>
+						<li><a href="#">1笔记本</a></li>
+						<li><a href="#">1数码相机</a></li>
+						<li><a href="#">1台式机</a></li>
+						<li><a href="#">1打印机</a></li>
+						<li><a href="#">1办公耗材</a></li>
+					</ul>
+				</li>
+				<li><a href="#">企业新闻</a>
+					<ul class="list_2" id="list_2_2">
+						<li><a href="#">2手机</a></li>
+						<li><a href="#">2笔记本</a></li>
+						<li><a href="#">2数码相机</a></li>
+						<li><a href="#">2台式机</a></li>
+						<li><a href="#">2打印机</a></li>
+						<li><a href="#">2办公耗材</a></li>
+					</ul>
+				</li>
+				<li><a href="#">企业文化</a>
+					<ul class="list_2" id="list_2_3">
+						<li><a href="#">3手机</a></li>
+						<li><a href="#">3笔记本</a></li>
+						<li><a href="#">3数码相机</a></li>
+						<li><a href="#">3台式机</a></li>
+						<li><a href="#">3打印机</a></li>
+						<li><a href="#">3办公耗材</a></li>
+					</ul>
+				</li>
+				<li><a href="#">产业介绍</a>
+					<ul class="list_2" id="list_2_4">
+						<li><a href="#">4手机</a></li>
+						<li><a href="#">4笔记本</a></li>
+						<li><a href="#">4数码相机</a></li>
+						<li><a href="#">4台式机</a></li>
+						<li><a href="#">4打印机</a></li>
+						<li><a href="#">4办公耗材</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

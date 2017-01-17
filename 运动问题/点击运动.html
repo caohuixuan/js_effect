@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击运动</title>
+		<style type="text/css">
+			#div1{
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				left: 50px;
+				top: 50px;
+				background-color: #009900;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var btn=document.getElementById("btn");
+				var div1=document.getElementById("div1");
+				var sid;
+				btn.onclick=function(){
+					clearInterval(sid);//防止点击多次开启多个定时器
+				 sid=setInterval(function(){
+						if(div1.offsetLeft>=500){
+							clearInterval(sid);
+						}else{//实现到达位置，点击按钮不变
+							div1.style.left=div1.offsetLeft+2+"px";
+						}
+					},20);
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button"id="btn" value="点击" />
+		<div id="div1"></div>
+	</body>
+</html>

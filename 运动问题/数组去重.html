@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组去重</title>
+	</head>
+	<script type="text/javascript">
+		/*Array.prototype.ert=function(){
+		var res=[this[0]];
+		for(var i=1;i<this.length;i++){
+			var flag=false;
+			for(var j in res){
+				if(this[i]==res[j]){
+					flag=true;
+					break;
+				}
+			}
+			if(flag==false){
+					res.push(this[i]);
+				}
+		}
+		return res;
+		};
+		var p=[1,1,2,3,3,4,5,3,5];
+		alert(p.ert());*/
+		Array.prototype.unique3=function(){
+			var res=[];
+			var json={};
+			console.log(json);
+			console.log(json[1]);
+			for(var i=0;i<this.length;i++){
+				if(!json[this[i]]){
+					res.push(this[i]);
+					json[this[i]]=1;
+				}
+			}
+			console.log(json);
+			return res; 
+		}
+		var p=[1,1,2,3,3,4,5,3,5];
+		console.log(p.unique3());
+		
+	</script>
+	<body>
+	</body>
+</html>

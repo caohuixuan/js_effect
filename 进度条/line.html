@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>进度条特效</title>
+		<style type="text/css">
+			#div1{
+				width: 600px;
+				height: 25px;
+				border: 1px solid #FF5050;
+			}
+			#div2{
+				width: 0%;
+				height: 25px;
+				background-color:#FF0000 ;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var div2=document.getElementById("div2");
+				var tip=1;
+				var sid=setInterval(function(){
+					div2.style.width=tip+++"%";
+					div2.innerHTML=div2.style.width;
+					if(div2.style.width=="100%"){
+						clearInterval(sid);
+					}
+				},50);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+	</body>
+</html>

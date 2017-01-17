@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tab菜单</title>
+		<style type="text/css">
+		body{
+			font: 14px "微软雅黑";
+		}
+		    #div1{
+		    	position: relative;
+		    	width: 300px;
+		    	height: 50px;
+		    }
+			#div1 ul{
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1 ul li{
+			float: left;
+			width: 60px;
+			}
+			#div1 a:link,#div1 a:visited{
+				color: #009900;
+			}
+			#div1 a:hover{
+				color: #FF0000;
+			}
+			 .div2_{
+			 	position: absolute;
+			 	top: 50px;
+			 	left: 0px;
+				display: none;
+				width: 300px;
+				height: 300px;
+				background-color: #EEEEEE;
+			}
+			.active{
+				background-color: #FFFF00;
+			}
+		</style>
+		<script type="text/javascript" src="addEvent.js"></script>
+		<script type="text/javascript">
+			addEvent(window,"load",function(){
+			var div1=document.getElementById("div1");
+			var list=div1.getElementsByTagName("a");
+			var div2_=document.getElementsByClassName("div2_");
+			for(var i in list){
+				addEvent(list[i],"click",function(){
+					for(var j=0;j<div2_.length;j++){
+						list[j].className="";
+						div2_[j].style.display="none";
+					}
+					this.className="active";
+			if(-[1,]){
+				this.nextElementSibling.style.display="block";
+			}else{
+				this.nextSibling.nextSibling.style.display="block";
+			}
+			});
+			}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li><a href="#">项目一</a>
+					<div class="div2_" style="display: block;">
+				这是项目一
+			    </div></li>
+				
+				<li><a href="#">项目二</a>
+					<div class="div2_">
+				这是项目二
+			    </div></li>
+				
+				<li><a href="#">项目三</a>
+					<div class="div2_">
+				这是项目三
+			    </div></li>
+				
+			</ul>
+		</div>
+	</body>
+</html>

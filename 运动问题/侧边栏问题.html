@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>侧边栏隐藏</title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				position: relative;
+				width: 200px;
+				height: 600px;
+				background-color: #CCCCCC;
+				top:0px;
+				left: -200px;
+			}
+			#div2{
+				position: absolute;
+				width: 20px;
+				height: 100px;
+				background-color: #FF5050;
+			    top:200px;
+			    right: -20px;
+			    text-align: center;
+			    
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var div1=document.getElementById("div1");
+				var sid;
+				var speed;
+				div1.onmouseover=function(){
+					move(0);
+				};
+				div1.onmouseout=function(){
+					move(-200);
+				};
+				function move(target){
+					clearInterval(sid);
+					sid=setInterval(function(){
+						speed=(target-div1.offsetLeft)/10;
+					    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						if(div1.offsetLeft==target){
+							clearInterval(sid);
+						}else{
+							div1.style.left=div1.offsetLeft+speed+"px";
+						}	
+					},20);
+				}
+			};
+		</script>
+	</head>
+	
+	<body>
+		<div id="div1">
+			<div id="div2">
+				分享到
+			</div>
+		</div>
+	</body>
+</html>

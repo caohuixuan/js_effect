@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度一下</title>
+		<style type="text/css">
+			#bt1{
+				position: absolute;
+				top: 200px;
+			}
+			#tip{
+				border: 0px solid #ccc;
+				width: 230px;
+			}
+			.blue{
+				color: blue;
+				font-weight: bold;
+				font-size: 12px;
+				cursor: pointer;
+				width: 230px;
+				box-shadow: #666;
+			}
+			.blue a{
+				text-decoration: none;
+				color: blue;
+				font-weight: normal;
+				float: right;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var search=document.getElementById("search");
+				var bt1=document.getElementById("bt1");
+				var tip=document.getElementById("tip");
+				var i=document.cookie.split(";").length;
+				bt1.onclick=function(){//点击百度一下存储cookie变量
+					var myDate=new Date();
+					var day10ms=myDate.getTime()+10*24*3600*1000;
+					myDate.setTime(day10ms);
+					var data="search"+i+"="+encodeURI(search.value);
+					i++;
+					document.cookie=data+"; expires="+myDate.toGMTString();
+					if(document.cookie!=""){//cookie不空才显示提示
+						var flag=true;
+						search.onkeyup=search.onkeypress=function(){
+							if(flag){
+								tip.style.borderWidth="1px";
+								flag=false;
+							}
+							tip.innerHTML="";
+							var data=document.cookie.split(";");
+							for(var i=0;i<data.length;i++){
+								var datasplit=data[i].split("=");
+								//如果cookie变量值中包含关键字或不为空，显示提示
+								if(decodeURI(datasplit[1]).indexOf(search.value)!=-1&& search.value!=""){
+									tip.innerHTML+="<div class='blue'>"+decodeURI(datasplit[1])+"<a href='javascript:void(0);' data-id="+i+">删除</a></div>";
+					                for(var j=0;j<tip.children.length;j++){
+					                	//给提示信息绑定事件
+					                	tip.children[j].onclick=function(){
+					                		search.value=this.innerText.substr(0,this.innerText.length-2);
+					                	};
+					                	tip.children[j].onmouseover=function(){
+					                		this.style.background="#ccc";
+					                	};
+					                	tip.children[j].onmouseover=function(){
+					                		this.style.background="#fff";
+					                	};
+					                	//给提示信息的子元素a标记绑定事件，删除当前div和消除cookie
+					                	tip.children[j].children[0].onclick=function(){
+					                		 this.parentNode.outerHTML="";
+					                		 var myDate=new Date();
+					                		 myDate.setDate(myDate.getTime()-1000);
+					                		 document.cookie="search"+this.getAttribute("data-id")+"=''; expire="+myDate.toGMTString();
+					                		 var e=e||window.event;
+					                		 if(-[1,]){
+					                		 	e.stopPropagation();
+					                		 }else{
+					                		 	e.cancelBubble=true;
+					                		 }
+					                	};
+					                }
+								}
+							}
+						};
+					}
+					
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="text" id="search" size="30" /> <!-- <span>开服务器，放在www中运行</span>-->
+		<div id="tip"></div>
+		<input type="button" id="bt1" value="百度一下" />
+	</body>
+</html>

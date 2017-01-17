@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新浪微博输入验证1</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var text1=document.getElementById("text1");
+				var tip=document.getElementById("tip");
+				var btn=document.getElementById("btn");
+				text1.onkeypress=text1.onkeyup=function(){
+					if(text1.value.length<=140){
+						tip.innerHTML="还有"+(140-text1.value.length)+"个字";
+					}else{
+						btn.onclick=function(){
+							var i=1;
+							var sid=setInterval(function(){
+								switch(i++){
+								case 1:
+								text1.style.backgroundColor="#dfaaaa";	
+								break;
+								case 2:
+								text1.style.backgroundColor="#d46161";
+								break;
+								case 3:
+								text1.style.backgroundColor="#f00";
+								break;
+								case 4:
+								text1.style.backgroundColor="#dfaaaa";
+								break;
+								}
+							},500);
+							if(i==4){
+								clearInterval(sid);
+							}
+						};
+						tip.innerHTML="超出"+(text1.value.length-140)+"个字";
+						tip.style.color="#FF0000";
+					}
+					
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<textarea id="text1" rows="10" cols="50"></textarea><span id="tip">还有140个字</span>
+		<br/>
+		<input type="button" id="btn" value="提交" />
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>焦点图-带超链接-事件监听器</title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				position: relative;
+				width: 600px;
+				left: 50%;
+				margin-left: -300px;
+			}
+			img{
+				vertical-align: top;
+			}
+			#focus{
+				position: absolute;
+				top: 350px;
+				left: 230px;
+				text-align: center;
+			}
+			#focus span{
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				_overflow:hidden;
+				background: url(images/dot.png);
+			}
+		</style>
+		<!--[if IE 6]>
+        <script type="text/javascript" src="js/iepng.js"></script> 
+        <script type="text/javascript">
+	    	EvPNG.fix('img,.d1,.d2,.d3,.d4,.d5');
+	    </script>
+<![endif]-->
+<script type="text/javascript" src="js/addEvent.js"></script>
+<script type="text/javascript">
+	addEvent(window,"load",function(){
+		var tt=function(_id){return document.getElementById(_id);};
+		var imgs=tt("imgs");
+		var focus=tt("focus");
+		var spans=focus.getElementsByTagName("span");
+		var tip;
+		for(var i=0;i<spans.length;i++){
+			spans[i].index=i;
+			addEvent(spans[i],"click",function(){
+				for(var j=0;j<spans.length;j++){
+					spans[j].style.background="url(images/dot.png)";
+				}
+				this.style.background="url(images/dotActive.png)";
+				tip=this.index;
+				if(-[1,]){
+					imgs.firstElementChild.href=(this.index+1)+".html";
+					imgs.firstElementChild.firstElementChild.src="images/"+(this.index+1)+".jpg";
+				}else{
+					imgs.firstChild.href=(this.index+1)+".html";
+					imgs.firstChild.firstChild.src="images/"+(this.index+1)+".jpg";
+				}
+			});
+		}
+		var k=1;
+	    setInterval(function(){
+	    	for(var j=0;j<spans.length;j++){
+	    		spans[j].style.background="url(images/dot.png)";
+	    	}
+	    	if(tip!=undefined){
+	    		k=tip;
+	    		tip=undefined;
+	    	}
+	    	spans[k].style.background="url(images/dotActive.png)";
+	    	if(-[1,]){
+					imgs.firstElementChild.href=(k+1)+".html";
+					imgs.firstElementChild.firstElementChild.src="images/"+(k+1)+".jpg";
+				}else{
+					imgs.firstChild.href=(k+1)+".html";
+					imgs.firstChild.firstChild.src="images/"+(k+1)+".jpg";
+				}
+				if(k>=4){
+					k=-1;
+				}
+				k++;
+	    },2000);
+	});
+</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="imgs">
+				<a href="1.html"><img src="images/1.jpg"/></a>
+			</div>
+			<div id="focus">
+				<span class="d1" style="background: url(images/dotActive.png);"></span>
+				<span class="d2"></span>
+				<span class="d3"></span>
+				<span class="d4"></span>
+				<span class="d5"></span>
+			</div>
+		</div>
+	</body>
+</html>

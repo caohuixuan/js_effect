@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>焦点图-不带超链接</title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				width: 600px;
+				position: relative;
+				left: 50%;
+				margin-left: -300px;
+			}
+			#focus{
+				position: absolute;
+				text-align: center;
+				top: 350px;
+				left: 230px;
+			}
+			#focus span{
+				width: 16px;
+				height: 16px;
+				_overflow:hidden;
+				display: inline-block;
+				background: url(images/dot.png);
+				margin-left: 10px;
+			}
+			img{
+				vertical-align: top;
+			}
+		</style>
+		<!--[if IE 6]>
+        <script type="text/javascript" src="js/iepng.js"></script> 
+        <script type="text/javascript">
+	    	EvPNG.fix('img,.d1,.d2,.d3,.d4,.d5');
+	    </script>
+<![endif]-->	
+<script type="text/javascript">
+	window.onload=function(){
+		var tt=function(_id){return document.getElementById(_id);}
+		var imgs=tt("imgs");
+		var focus=tt("focus");
+		var spans=focus.getElementsByTagName("span");
+		var tip;
+		for(var i=0;i<spans.length;i++){
+			spans[i].index=i;
+			spans[i].onclick=function(){
+				for(var j=0;j<spans.length;j++){
+				spans[j].style.background="url(images/dot.png)";
+			}
+			this.style.background="url(images/dotActive.png)";
+			tip=this.index;
+			if(-[1,]){
+		        imgs.firstElementChild.src="images/"+(tip+1)+".jpg";		
+			}else{
+				imgs.firstChild.src="images/"+(tip+1)+".jpg";
+			}};
+		}
+		var k=1;
+		setInterval(function(){
+			for(var j=0;j<spans.length;j++){
+				spans[j].style.background="url(images/dot.png)";
+			}
+			if(tip!=undefined){
+				k=tip;
+				tip=undefined;
+			}
+			spans[k].style.background="url(images/dotActive.png)";
+			if(-[1,]){
+				imgs.firstElementChild.src="images/"+(k+1)+".jpg";	
+			}else{
+				imgs.firstChild.src="images/"+(k+1)+".jpg";
+			}
+			if(k>=4){
+				k=-1;
+			}
+			k++;
+		},2000);
+	};
+</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="imgs">
+				<img src="images/1.jpg"/>
+			</div>
+			<div id="focus">
+				<span class="d1" style="background: url(images/dotActive.png);"></span>
+				<span class="d2"></span>
+				<span class="d3"></span>
+				<span class="d4"></span>
+				<span class="d5"></span>
+			</div>
+		</div>
+	</body>
+</html>

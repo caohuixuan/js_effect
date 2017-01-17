@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>无缝滚动2</title>
+		<script type="text/javascript" src="addEvent.js"></script>
+		<style type="text/css">
+		#div1{
+			position: relative;
+			height: 100px;
+			width: 942px;
+			border: 3px solid #FF0000;
+			overflow: hidden;
+		}
+		img{
+			position: absolute;
+		}
+		</style>
+		<script type="text/javascript">
+			addEvent(window,"load",function(){
+				var div1=document.getElementById("div1");
+				var imgs=div1.getElementsByTagName("img");
+				for(var i=1;i<imgs.length;i++){
+					imgs[i].style.left=imgs[i-1].offsetLeft+157+"px";
+				}
+				var sid;
+				function moveImg(){
+					sid=setInterval(function(){
+						for(var j=0;j<imgs.length;j++){
+							imgs[j].style.left=imgs[j].offsetLeft-1+"px";
+						}
+						if(imgs[0].offsetLeft<=-942){
+							imgs[0].style.left="942px";
+							for(var j=1;j<6;j++){
+								imgs[j].style.left=imgs[j-1].offsetLeft+157+"px";
+							}
+						}
+						if(imgs[6].offsetLeft<=-942){
+							imgs[6].style.left="942px";
+							for(var j=7;j<12;j++){
+								imgs[j].style.left=imgs[j-1].offsetLeft+157+"px";
+							}
+						}
+					},10);
+				}
+				moveImg();
+				div1.onmouseover=function(){
+					clearInterval(sid);
+				};
+				div1.onmouseout=function(){
+					moveImg();
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1"><img src="images/jjx1.jpg"/><img src="images/jjx2.jpg"/><img src="images/jjx3.jpg"/><img src="images/jjx4.jpg"/><img src="images/jjx5.jpg"/><img src="images/jjx6.jpg"/><img src="images/jjx1.jpg"/><img src="images/jjx2.jpg"/><img src="images/jjx3.jpg"/><img src="images/jjx4.jpg"/><img src="images/jjx5.jpg"/><img src="images/jjx6.jpg"/></div>
+	</body>
+</html>
